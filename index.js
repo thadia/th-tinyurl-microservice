@@ -1,37 +1,36 @@
 var server = require('express');
-var app = server();
 var moment = require('moment');
-var fs = require('fs');
 var path = require('path');
 var port = process.env.PORT || 3500;
+var app = server();
 
 app.listen(port, function(){
-  console.log("Listening on port: " + port);
+
 });
 
 //landing page default: Index.html
 app.get('/', function(req, res) {
-var fileName = path.join(__dirname, 'index.html');
-  res.sendFile(fileName, function (err) {
+var file = path.join(__dirname, 'index.html');
+  res.sendFile(file, function (err) {
     if (err) {
       console.log(err);
       res.status(err.status).end();
     }
     else {
-      console.log('Sent:', fileName);
+      console.log('File sent:', file);
     }
   });
 });
 
 //endpoints for Unix & Natural
-app.get('/:datestring', function(req,res) {
+app.get('/:inputdate', function(req,res) {
   var myDate;
   //case if Unix
-  if(/^\d{8,}$/.test(req.params.datestring)) {
-    myDate = moment(req.params.datestring, "X");
+  if(/^\d{8,}$/.test(req.params.inputdate)) {
+    myDate = moment(req.params.inputdate, "X");
     
   } else { //case if Natural
-    myDate = moment(req.params.datestring, "MMMM D, YYYY");
+    myDate = moment(req.params.inputdate, "MMMM D, YYYY");
   }
 
 //check for errors
