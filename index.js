@@ -24,20 +24,20 @@ var file = path.join(__dirname, 'index.html');
 
 //endpoints for Unix & Natural
 app.get('/:inputdate', function(req,res) {
-  var myDate;
+  var outputdata;
   //case if Unix
   if(/^\d{8,}$/.test(req.params.inputdate)) {
-    myDate = moment(req.params.inputdate, "X");
+    outputdata = moment(req.params.inputdate, "X");
     
   } else { //case if Natural
-    myDate = moment(req.params.inputdate, "MMMM D, YYYY");
+    outputdata = moment(req.params.inputdate, "MMMM D, YYYY");
   }
 
 //check for errors
-  if(myDate.isValid()) {
+  if(outputdata.isValid()) {
     res.json({
-      unix: myDate.format("X"),
-      natural: myDate.format("MMMM D, YYYY")
+      unix: outputdata.format("X"),
+      natural: outputdata.format("MMMM D, YYYY")
     });
   } else {
     res.json({
