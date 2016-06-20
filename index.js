@@ -11,16 +11,14 @@ app.listen(port, function(){
 });
 
 app.get('/', function(req, res) {
- // var fileName = path.join(__dirname, 'index.html');
-  var filePath = path.resolve('index.html');
- // res.sendFile(fileName, function (err) {
-  res.sendFile(filePath, function (err) {
+var fileName = path.join(__dirname, 'index.html');
+  res.sendFile(fileName, function (err) {
     if (err) {
       console.log(err);
       res.status(err.status).end();
     }
     else {
-      console.log('Sent:', filePath);
+      console.log('Sent:', fileName);
     }
   });
 });
