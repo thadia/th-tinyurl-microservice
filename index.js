@@ -1,11 +1,13 @@
+
+var platform = require('platform');
 var server = require('express');
-var moment = require('moment');
-var path = require('path');
+//var moment = require('moment');
+//var path = require('path');
 var port = process.env.PORT || 3500;
 var app = server();
 
 app.listen(port, function(){ 
-  console.log('Ready');
+  console.log('Ready: ' + port);
   });
 
 //endpoints for Unix & Natural
@@ -16,7 +18,7 @@ app.get('/api/whoami', function(req,res) {
      //{"ipaddress":"216.64.167.250","language":"en-US","software":"Windows NT 6.1; WOW64; rv:47.0"}
       ipaddress:null,
       language:null,
-      software:navigator.userAgent   
+      software:platform.os   
       
       //unix: outputdata.format("X"),
       //natural: outputdata.format("MMMM D, YYYY")
