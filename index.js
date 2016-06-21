@@ -4,35 +4,20 @@ var path = require('path');
 var port = process.env.PORT || 3500;
 var app = server();
 
-app.listen(port, function(){
-
-});
-
-//landing page default: Index.html
-app.get('/', function(req, res) {
-var file = path.join(__dirname, 'index.html');
-  res.sendFile(file, function (err) {
-    if (err) {
-      console.log(err);
-      res.status(err.status).end();
-    }
-    else {
-      console.log('File sent:', file);
-    }
+app.listen(port, function(){ 
+  console.log('Ready');
   });
-});
 
 //endpoints for Unix & Natural
-app.get('/:inputdate', function(req,res) {
+app.get('/:inputdata', function(req,res) {
   var outputdata;
   //case if Unix
-  if(/^\d{8,}$/.test(req.params.inputdate)) {
-    outputdata = moment(req.params.inputdate, "X");
+  if(/^\d{8,}$/.test(req.params.inputdata)) {
+    outputdata = moment(req.params.inputdata, "X");
     
   } else { //case if Natural
-    outputdata = moment(req.params.inputdate, "MMMM D, YYYY");
+    outputdata = moment(req.params.inputdata, "MMMM D, YYYY");
   }
-
 //check for errors
   if(outputdata.isValid()) {
     res.json({
@@ -45,6 +30,19 @@ app.get('/:inputdate', function(req,res) {
       natural: null
     });
   }
+});
 
 
+//landing page default: Index.html
+app.get('/', function(req, res) {
+//var file = path.join(__dirname, 'index.html');
+  res.sendFile(path.join(__dirname, 'index.html'), function (err) {
+    if (err) {
+      console.log(err);
+      res.status(err.status).end();
+    }
+    else {
+      console.log('File sent:', path.join(__dirname, 'index.html'));
+    }
+  });
 });
