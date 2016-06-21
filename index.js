@@ -15,7 +15,7 @@ app.get('/api/whoami', function(req,res) {
                 req.socket.remoteAddress ||
                 req.connection.socket.remoteAddress,
       language:req.headers['accept-language'],
-      software:req.headers['user-agent'].match(/\([^\)]+\)/g)
+      software:req.headers['user-agent'].match(/\(([^()]*)\)/g)
 
     });
   
