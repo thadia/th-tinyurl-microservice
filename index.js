@@ -16,7 +16,7 @@ app.get('/api/whoami', function(req,res) {
      //{"ipaddress":"216.64.167.250","language":"en-US","software":"Windows NT 6.1; WOW64; rv:47.0"}
       ipaddress:null,
       language:null,
-      software:null   
+      software:window.navigator.userAgent   
       
       //unix: outputdata.format("X"),
       //natural: outputdata.format("MMMM D, YYYY")
