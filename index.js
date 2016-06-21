@@ -19,8 +19,9 @@ app.get('/api/whoami', function(req,res) {
                 req.connection.remoteAddress || 
                 req.socket.remoteAddress ||
                 req.connection.socket.remoteAddress,
-      language:null,
-      software:platform.os
+      language:req.headers['accept-language'],
+      software:req.headers['user-agent']
+
       
       //unix: outputdata.format("X"),
       //natural: outputdata.format("MMMM D, YYYY")
