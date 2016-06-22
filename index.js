@@ -29,7 +29,7 @@ app.get('/new/:inputurl(*)/', function(req,res) {
 
 app.get('/:tiny', function(req,res) {
    //do a for  
-   console.log("Logging::::" + req.params.tiny + "::::::"  + map_global + "::::::" map_global.length);
+   console.log("Logging::::" + req.params.tiny + "::::::"  + map_global + "::::::" + map_global.length);
 
    var redir_url=search.findTiny(req.params.tiny,map_global);
    console.log("Logging::::" + redir_url);
