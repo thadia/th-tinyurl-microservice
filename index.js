@@ -1,7 +1,7 @@
 var server = require('express');
 var port = process.env.PORT || 3500;
 var app = server();
-var map_global=[[]];
+var map_global=[[],[]];
 var tiny_global=0;
 var max =100;
 var c=0; 
