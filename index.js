@@ -26,7 +26,7 @@ app.get('/new/:inputurl(*)/', function(req,res) {
 app.get('/:tiny', function(req,res) {
    //do a for
    var redir_url=search.findTiny(req.params.tiny,map_global);
-   console.log(redir_url);
+   console.log("Logging::::" + redir_url);
    res.redirect(redir_url);
    
    
