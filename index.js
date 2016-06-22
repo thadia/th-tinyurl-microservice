@@ -12,7 +12,7 @@ app.listen(port, function(){
   });
 
 app.get('/new/:inputurl(*)/', function(req,res) {
-    tiny_global = tiny_global + 1;
+  
     res.json({
       //{ "original_url":"http://foo.com:80", "short_url":"https://little-url.herokuapp.com/8170" }
       original_url:req.params.inputurl, //=> 'http://google.com'
@@ -21,7 +21,8 @@ app.get('/new/:inputurl(*)/', function(req,res) {
     
     map_global[c][1] = req.params.inputurl;
     map_global[c][0] = tiny_global;
-
+    tiny_global = tiny_global + 1;
+    c=c+1;
 });
 
 app.get('/:tiny', function(req,res) {
