@@ -9,8 +9,8 @@ app.listen(port, function(){
   });
 
 app.get('/new/:inputurl', function(req,res) {
-  var result, inputurl;
-   result = shrink.shorten(inputurl);
+  var result;
+   result = shrink.shorten(req.params.inputurl);
  
     res.json({
         
@@ -18,7 +18,7 @@ app.get('/new/:inputurl', function(req,res) {
      
       original_url:result.longUrl, //=> 'http://google.com'
       short_url:result.shortUrl,
-      original:inputurl //=> 'http://mt.cx/AAA'
+      original:req.params.inputurl //=> 'http://mt.cx/AAA'
     });
   
   
