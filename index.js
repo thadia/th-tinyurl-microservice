@@ -21,7 +21,7 @@ app.get('/new/:inputurl(*)/', function(req,res) {
     
   //  map_global[c][1] = req.params.inputurl;
   //  map_global[c][0] = tiny_global;
-    map_global.push([req.params.inputurl,tiny_global]);
+    map_global[tiny_global].push([req.params.inputurl,tiny_global]);
     tiny_global = tiny_global + 1;
     c=c+1;
 });
