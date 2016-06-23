@@ -1,7 +1,7 @@
 var server = require('express');
 var port = process.env.PORT || 3500;
 var app = server();
-var map_global=[["http://www.google.ro","0"],["http://www.google.ro","1"],["http://www.google.ro","2"]];
+var map_global=[[]];
 var tiny_global=0;
 var max =100;
 var c=0; 
