@@ -12,19 +12,19 @@ app.listen(port, function(){
 
 app.get('/new/:inputurl(*)/', function(req,res) {
   //the array witll clear at 100 max requested urls
-  if(tiny_global >= max) { //map_global.length=0; 
-  tiny_global=0; }
+  if(tiny_global >= max) { 
+    map_global.length=0; 
+    tiny_global=0; 
+  }
   
     res.json({
       //{ "original_url":"http://foo.com:80", "short_url":"https://little-url.herokuapp.com/8170" }
       original_url:req.params.inputurl, //=> 'http://google.com'
       short_url:"https://th-tinyurl-microservice.herokuapp.com/" + tiny_global
     });
-;
-   // var temp_arr=[req.params.inputurl , tiny_global];
-    map_global[tiny_global][0]=req.params.inputurl;
-    //map_global[tiny_global][1]=tiny_global;
 
+   var temp_arr=[req.params.inputurl , tiny_global];
+    map_global.push(temp_arr);
     tiny_global = tiny_global + 1;
    // c=c+1;
 });
