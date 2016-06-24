@@ -12,7 +12,7 @@ app.listen(port, function(){
   });
 
 app.get('/new/:inputurl(*)/', function(req,res) {
-  if(tiny_global >= max) map_global=[];
+  if(tiny_global >= max) map_global.length=0;
   
     res.json({
       //{ "original_url":"http://foo.com:80", "short_url":"https://little-url.herokuapp.com/8170" }
