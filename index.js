@@ -5,6 +5,7 @@ var map_global=[];
 var tiny_global=0;
 var max =1000;
 var search = require('./search.js');
+var path = require('path');
 
 app.listen(port, function(){ 
   console.log('Ready: ' + port);
@@ -45,4 +46,18 @@ app.get('/:tiny', function(req,res) {
        });
    }
    
+});
+
+
+app.get('/', function(req, res) {
+  var fileName = path.join(__dirname, 'index.html');
+  res.sendFile(fileName, function (err) {
+    if (err) {
+      console.log(err);
+      res.status(err.status).end();
+    }
+    else {
+      console.log('Sent:', fileName);
+    }
+  });
 });
