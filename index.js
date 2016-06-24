@@ -3,7 +3,7 @@ var port = process.env.PORT || 3500;
 var app = server();
 var map_global=[];
 var tiny_global=0;
-var max =2;
+var max =1000;
 var search = require('./search.js');
 
 app.listen(port, function(){ 
