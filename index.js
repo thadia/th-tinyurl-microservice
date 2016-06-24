@@ -1,6 +1,5 @@
 var server = require('express');
 var port = process.env.PORT || 3500;
-var path = require('path');
 var app = server();
 var map_global=[];
 var tiny_global=0;
@@ -38,23 +37,9 @@ app.get('/:tiny', function(req,res) {
    }
    else{
       console.log("Not Found::::" + req.params.tiny);
-      res.redirect("https://th-tinyurl-microservice.herokuapp.com/home");
+       res.json({
+          error:"Url Not Found"
+       });
    }
-   
-});
-
-app.get('/home', function(req, res) {
-  var fileName = path.join(__dirname, 'index.html');
-  res.sendFile(fileName, function (err) {
-    if (err) {
-      console.log(err);
-      res.status(err.status).end();
-    }
-    else {
-      console.log('Sent:', fileName);
-    }
-  });
-//      res.redirect("https://th-tinyurl-microservice.herokuapp.com/home/index.html");
-
    
 });
