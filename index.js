@@ -3,8 +3,8 @@ var port = process.env.PORT || 3500;
 var app = server();
 var map_global=[];
 var tiny_global=0;
-var max =100;
-var c=0; 
+var max =3;
+//var c=0; 
 var search = require('./search.js');
 
 app.listen(port, function(){ 
@@ -12,6 +12,7 @@ app.listen(port, function(){
   });
 
 app.get('/new/:inputurl(*)/', function(req,res) {
+  if(tiny_global >= max) tiny_global =0;
   
     res.json({
       //{ "original_url":"http://foo.com:80", "short_url":"https://little-url.herokuapp.com/8170" }
@@ -24,7 +25,7 @@ app.get('/new/:inputurl(*)/', function(req,res) {
     var temp_arr=[req.params.inputurl , tiny_global];
     map_global.push(temp_arr);
     tiny_global = tiny_global + 1;
-    c=c+1;
+   // c=c+1;
 });
 
 app.get('/:tiny', function(req,res) {
