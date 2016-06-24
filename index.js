@@ -3,7 +3,7 @@ var port = process.env.PORT || 3500;
 var app = server();
 var map_global=[];
 var tiny_global=0;
-var max =3;
+var max =2;
 var search = require('./search.js');
 
 app.listen(port, function(){ 
@@ -12,7 +12,8 @@ app.listen(port, function(){
 
 app.get('/new/:inputurl(*)/', function(req,res) {
   //the array witll clear at 100 max requested urls
-  if(tiny_global >= max) { map_global.length=0; tiny_global=0; }
+  if(tiny_global >= max) { //map_global.length=0; 
+  tiny_global=0; }
   
     res.json({
       //{ "original_url":"http://foo.com:80", "short_url":"https://little-url.herokuapp.com/8170" }
@@ -20,8 +21,10 @@ app.get('/new/:inputurl(*)/', function(req,res) {
       short_url:"https://th-tinyurl-microservice.herokuapp.com/" + tiny_global
     });
 ;
-    var temp_arr=[req.params.inputurl , tiny_global];
-    map_global.push(temp_arr);
+   // var temp_arr=[req.params.inputurl , tiny_global];
+    map_global[tiny_global][0]=req.params.inputurl;
+    //map_global[tiny_global][1]=tiny_global;
+
     tiny_global = tiny_global + 1;
    // c=c+1;
 });
@@ -38,7 +41,7 @@ app.get('/:tiny', function(req,res) {
    else{
       console.log("Not Found::::" + req.params.tiny);
        res.json({
-          error:"Url Not Found"
+          error:"url is not found"
        });
    }
    
